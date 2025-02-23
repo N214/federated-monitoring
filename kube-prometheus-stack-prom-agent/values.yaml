@@ -1,0 +1,15 @@
+defaultRules:
+  create: false
+grafana:
+  enabled: false
+alertmanager:
+  enabled: false
+prometheus:
+  enabled: true
+  agentMode: true
+  prometheusSpec:
+    externalLabels:
+      cluster: cluster2
+    additionalRemoteWrite:
+      - name: mimir-Infra
+        url: 'http://100.66.209.173/api/v1/push'

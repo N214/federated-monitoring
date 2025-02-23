@@ -1,0 +1,5 @@
+config:
+  clients:
+    - url: http://100.66.77.100/loki/api/v1/push # Loki endpoint to push all the Logs
+extraArgs:
+  - -client.external-labels=cluster=cluster2  # Add label to distinguish clusters, change it for each cluster in wich you want to install promtail.

@@ -24,7 +24,7 @@ The child cluster should contain only contain `Prom Agent` and `Promtail`.
   - kubens
 
 ## Deploy two kind cluster
-For the sake of the demo, we need two kind cluster and has communication between them. Networking configuration is not part of the focus here, so I have decided to use a easy solution with submariner but there should be a cleaner setup with kind directly.
+For the sake of the demo, we need two kind clusters that has communication between them. Networking configuration is not part of the focus here, so I have decided to use a easy solution with Submariner but there should be a cleaner setup with kind directly.
 
 `https://submariner.io/getting-started/quickstart/kind/#deploy-kind-with-submariner-locally`
 
