@@ -4,7 +4,7 @@ mimir:
       storage:
         backend: gcs
         gcs:
-          bucket_name: lgtm-bucket
+          bucket_name: lgtm-bucket # Create your storage bucket before deploying the chart.
     blocks_storage:
       backend: gcs
       storage_prefix: blocks
@@ -14,19 +14,6 @@ mimir:
     ruler_storage:
       backend: gcs
       storage_prefix: ruler
-        #nginx:
-        #  ingress:
-        #    enabled: false
-        #    ingressClassName: nginx
-        #    hosts:
-        #      - host: nginx.mimir.com
-        #        paths:
-        #          - path: /
-        #            pathType: Prefix
-        #    tls:
-        #      - secretName: mimir-tls
-        #        hosts:
-        #          - nginx.mimir.com
 minio:
   enabled: false
 ingester:
