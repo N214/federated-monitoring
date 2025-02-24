@@ -1,0 +1,1 @@
+{{- include "grafana.dashboard.configmaps" (merge (dict "path" "dashboards/*.json") .) }}

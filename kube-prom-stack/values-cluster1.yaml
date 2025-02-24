@@ -1,0 +1,62 @@
+kube-prometheus-stack:
+  defaultRules:
+    create: false
+  grafana:
+      enabled: true
+      defaultDashboardsTimezone: "America/Toronto"
+      defaultDashboardsEnabled: false
+      adminUser: "admin"
+      adminPassword: "admin"
+      assertNoLeakedSecrets: false
+      sidecar:
+        datasources:
+          enabled: true
+          defaultDatasourceEnabled: false
+          isDefaultDatasource: false
+        dashboards:
+          enabled: true
+          annotations:
+            grafana_folder: "default"
+          defaultFolderName: "default"
+          folderAnnotation: "grafana_folder"
+          label: grafana_dashboard
+          labelValue: '1'
+          provider:
+            foldersFromFilesStructure: true
+      additionalDataSources:
+        - name: Mimir
+          type: prometheus
+          uid: prometheus
+          access: proxy
+          orgId: 1
+          editable: false
+          url: http://mimir-nginx.mimir.svc.cluster.local/prometheus
+          version: 1
+            #jsonData:
+            #  httpHeaderName1: X-Scope-OrgID
+            #secureJsonData:
+            #  httpHeaderValue1: mimir
+        - name: Loki
+          type: loki
+          uid: loki
+          access: proxy
+          editable: false
+          version: 1
+          orgId: 1
+          url: http://loki-gateway.loki.svc.cluster.local
+          jsonData:
+            maxLines: 1000
+            httpHeaderName1: X-Scope-OrgID
+          secureJsonData:
+            httpHeaderValue1: loki
+  alertmanager:
+    enabled: false
+  prometheus:
+    enabled: true
+    agentMode: true
+    prometheusSpec:
+      externalLabels:
+        cluster: cluster1
+      additionalRemoteWrite:
+        - name: Mimir
+          url: http://mimir-nginx.mimir.svc.cluster.local/api/v1/push
