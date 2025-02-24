@@ -31,13 +31,12 @@ For the sake of the demo, we need two kind clusters that has communication betwe
 After following the tutorial here, we should have two cluster `cluster1` and `cluster2` that has communication enabled between them, you should able to spin a nginx pod in one cluster and test to curl the ip/dns from the other cluster.
 
 ## Helm Charts
-#### Cluster 1
-##### [Mimir](mimir/README.md)
+#### [Mimir](mimir/README.md)
 A scallable timeseries database to store all the metrics send by the different Prom Agent, used as backend for Grafana to query metrics and dashboard. Object storage backend.
-##### [Loki](loki/README.md)
+#### [Loki](loki/README.md)
 A centralized database to store all the logs from Promtail.
-##### [Grafana and Prom Agent](kube-prom-stack/README.md)
+#### [Grafana and Prom Agent](kube-prom-stack/README.md)
 Grafana act as unique frontend for all the monitoring we have here.
 A Prometheus Agent installed in each cluster that only forwards the metrics to Mimir.
-##### [Promtail](promtail/README.md)
+#### [Promtail](promtail/README.md)
 A logging Agent that forwards the local logs to Loki.
