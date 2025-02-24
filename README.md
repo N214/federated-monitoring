@@ -13,7 +13,7 @@ flowchart TD
 ```
 The main cluster should contain `Grafana`, `Mimir`, `Loki`, `Prom Agent` and `Promtail`.
 
-The child cluster should contain only contain `Prom Agent` and `Promtail`.
+The child clusters should contain only contain `Prom Agent` and `Promtail`.
 
 
 ## Prerequisite
