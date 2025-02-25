@@ -24,7 +24,7 @@ kube-prometheus-stack:
           provider:
             foldersFromFilesStructure: true
       additionalDataSources:
-        - name: Mimir
+        - name: Mimir-Pods
           type: prometheus
           uid: prometheus
           access: proxy
@@ -32,10 +32,10 @@ kube-prometheus-stack:
           editable: false
           url: http://mimir-nginx.mimir.svc.cluster.local/prometheus
           version: 1
-            #jsonData:
-            #  httpHeaderName1: X-Scope-OrgID
-            #secureJsonData:
-            #  httpHeaderValue1: mimir
+            jsonData:
+              httpHeaderName1: X-Scope-OrgID
+            secureJsonData:
+              httpHeaderValue1: pods
         - name: Loki
           type: loki
           uid: loki
@@ -58,5 +58,7 @@ kube-prometheus-stack:
       externalLabels:
         cluster: cluster1
       additionalRemoteWrite:
-        - name: Mimir
+        - name: Mimir-pods-metrics
           url: http://mimir-nginx.mimir.svc.cluster.local/api/v1/push
+          headers:
+            X-Scope-OrgID: pods
