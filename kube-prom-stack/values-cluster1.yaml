@@ -32,10 +32,10 @@ kube-prometheus-stack:
           editable: false
           url: http://mimir-nginx.mimir.svc.cluster.local/prometheus
           version: 1
-            jsonData:
-              httpHeaderName1: X-Scope-OrgID
-            secureJsonData:
-              httpHeaderValue1: pods
+          jsonData:
+            httpHeaderName1: X-Scope-OrgID
+          secureJsonData:
+            httpHeaderValue1: pods
         - name: Loki
           type: loki
           uid: loki
